@@ -43,5 +43,5 @@ router.patch('/orders/:orderId', (req,res) => {
 
 //Delete/cancel order
 router.delete('/orders/:orderId', (req,res) => {
-  res.send('Ookkk');
+  res.send('OK');
  });
