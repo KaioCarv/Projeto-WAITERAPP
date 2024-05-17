@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost:27017')
   app.use(router);
 
   app.listen(port, () => {
-    console.log(`🚀 Server is running on http://localhost:${port}`);
+    console.log(`🚀 Server iss running on http://localhost:${port}`);
   });
 
 })
