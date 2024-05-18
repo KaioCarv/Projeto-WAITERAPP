@@ -5,8 +5,8 @@ import { Container } from "./styles";
 const orders: Order[] = [
   {
 		"_id": "6646a3e00e22157eb49f3fc1",
-		"table": "123",
-		"status": "DONE",
+		"table": "2",
+		"status": "WAITING",
 		"products": [
 			{
 				"product": {
