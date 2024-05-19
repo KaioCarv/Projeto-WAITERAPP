@@ -1,3 +1,4 @@
+import { Button } from '../components/Button'
 import { Categories } from '../components/Categories'
 import { Header } from '../components/Header'
 import { Menu } from '../components/Menu'
@@ -26,7 +27,11 @@ export function Main(){
     </Container>
 
       <Footer>
-        <FooterConatiner></FooterConatiner>
+        <FooterConatiner>
+          <Button onPress={() => alert('Novo Pedido')}>
+            Novo Pedido
+          </Button>
+        </FooterConatiner>
       </Footer>
     </>
   )
