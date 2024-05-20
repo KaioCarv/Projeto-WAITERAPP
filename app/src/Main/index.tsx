@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { Button } from '../components/Button'
+import { Cart } from '../components/Cart'
 import { Categories } from '../components/Categories'
 import { Header } from '../components/Header'
 import { Menu } from '../components/Menu'
 import { TableModal } from '../components/TableModal'
+import { products } from '../mocks/products'
+import { CartItem } from '../types/CartItem'
 import {
   CategoriesContainer,
   Container,
@@ -15,15 +18,33 @@ import {
 export function Main(){
  const [isTableModalVisible, setIsTableModalVisible] = useState(false);
  const [selectedTable, setSelectedTable] = useState('');
+ const [cartItems, setCartItems] = useState<CartItem[]>([
+  {
+    quantity: 1,
+    product: products[0],
+  },
+  {
+    quantity: 2,
+    product: products[1],
+  }
+ ]);
 
  function handleSaveTable(table: string){
-  setSelectedTable(table)
+  setSelectedTable(table);
+  setIsTableModalVisible(false);
  }
+
+function handleCancelOrder(){
+  setSelectedTable('');
+}
 
   return (
     <>
     <Container>
-      <Header/>
+      <Header
+      selectedTable={selectedTable}
+      onCancelOrder={handleCancelOrder}
+      />
 
       <CategoriesContainer>
           <Categories/>
@@ -42,6 +63,10 @@ export function Main(){
              Novo Pedido
              </Button>
          )}
+
+         {selectedTable && (
+          <Cart cartItems={cartItems}/>
+         )}
         </FooterConatiner>
       </Footer>
 
@@ -50,6 +75,7 @@ export function Main(){
       onClose={() => {setIsTableModalVisible(false)}}
       onSave={handleSaveTable}
       />
+
     </>
   )
 }
