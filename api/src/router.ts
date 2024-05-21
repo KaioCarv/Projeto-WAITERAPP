@@ -9,6 +9,7 @@ import { cancelOrder } from "./app/useCases/orders/cancelOrder";
 import { changeOrderStatus } from "./app/useCases/orders/changeOrderStatus";
 import { createOrder } from "./app/useCases/orders/createOrder";
 import { listOrders } from "./app/useCases/orders/listOrders";
+import { UpdateCategory } from "./app/useCases/orders/updateCategory";
 import { createProduct } from "./app/useCases/products/createProducts";
 import { listProducts } from "./app/useCases/products/listProducts";
 
@@ -40,6 +41,9 @@ const upload = multer({
  router.post('/orders', createOrder);
 //Change order status
 router.patch('/orders/:orderId', changeOrderStatus);
+
+//UpdateCategory
+router.patch('/categories/:categoryId', UpdateCategory);
 
 //Delete/cancel order
 router.delete('/orders/:orderId', cancelOrder);
