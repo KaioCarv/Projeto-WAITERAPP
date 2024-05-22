@@ -55,15 +55,15 @@ async function handleChangeOrderStatus(){
     setModalVisible(false);
    }
 
-  return(
+  return (
     <Board>
-    <OrderModal
-      visible={isModalVisible}
-      order={selectedOrder}
-      onClose={handleCloseModal}
-      onCancelOrder={handleCancelOrder}
-      isLoading={isLoading}
-      onChangeOrderStatus={handleChangeOrderStatus}
+      <OrderModal
+        visible={isModalVisible}
+        order={selectedOrder}
+        onClose={() => handleCloseModal()}
+        onCancelOrder={handleCancelOrder}
+        isLoading={isLoading}
+        onChangeOrderStatus={handleChangeOrderStatus}
       />
 
       <header>
@@ -71,18 +71,20 @@ async function handleChangeOrderStatus(){
         <strong>{title}</strong>
         <span>({orders.length})</span>
       </header>
-
       {orders.length > 0 && (
         <OrdersContainer>
-        {orders.map((order) => (
-           <button type="button" key={order._id} onClick={() => handleOpenOrder(order)}>
-           <strong>Mesa {order.table}</strong>
-            <span>{order.products.length} itens</span>
-         </button>
-        ))}
-      </OrdersContainer>
+          {orders.map((order) => (
+            <button type="button" key={order._id} onClick={() => handleOpenOrder(order)}>
+              <strong>
+                Mesa {order.table}
+              </strong>
+              <span>
+                {order.products.length} pedidos
+              </span>
+            </button>
+          ))}
+        </OrdersContainer>
       )}
     </Board>
-
-  )
+  );
 }

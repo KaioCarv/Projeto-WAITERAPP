@@ -39,6 +39,7 @@ const [isModalVisible, setIsModalVisible] = useState(false);
 async function handleConfirmOrder(){
 
   setIsLoading(true);
+  console.log(cartItems)
 
   await api.post('/orders', {
     table: selectedTable,
@@ -46,7 +47,13 @@ async function handleConfirmOrder(){
     product: cartItem.product._id,
     quantity: cartItem.quantity,
    })),
+
+
 })
+console.log(cartItems.map((cartItem) => ({
+  product: cartItem.product._id,
+  quantity: cartItem.quantity,
+ })))
 
   setIsLoading(false);
   setIsModalVisible(true);

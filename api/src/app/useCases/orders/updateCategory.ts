@@ -8,7 +8,6 @@ export async function UpdateCategory(req: Request,res: Response){
 
    await Category.findByIdAndUpdate(categoryId, {name, icon});
    res.sendStatus(204);
-   console.log(categoryId)
 
    } catch (error) {
     console.log(error);
